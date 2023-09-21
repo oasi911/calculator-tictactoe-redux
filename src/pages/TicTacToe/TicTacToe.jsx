@@ -1,4 +1,4 @@
-import { Board } from "../Board/Board";
+import { Board } from "../../components/tictactoe/Board/Board";
 import { useState } from "react";
 
 export function TicTacToe() {

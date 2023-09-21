@@ -1,6 +1,6 @@
-import { Display } from "../Display/Display";
-import { Buttons } from "../Buttons/Buttons";
-import { History } from "../History/History";
+import { Display } from "../../components/calc/Display/Display";
+import { Buttons } from "../../components/calc/Buttons/Buttons";
+import { History } from "../../components/calc/History/History";
 import { useState, useEffect } from "react";
 
 export function Calculator() {
