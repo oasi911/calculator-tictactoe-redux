@@ -1,0 +1,64 @@
+.historyOpen {
+  position: relative;
+  top: -270px;
+  opacity: 1;
+  height: 270px;
+  width: 320px;
+  overflow: hidden;
+}
+
+.historyClose {
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.historySecOpen {
+  position: absolute;
+  top: 270px;
+  height: 100%;
+  width: 100%;
+  background-color: #181818f5;
+  opacity: 1;
+  overflow: auto;
+  transform: translateY(-100%);
+  transition-duration: 300ms;
+}
+
+.historySecClose {
+  position: absolute;
+  top: 270px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.list {
+  margin: 0;
+}
+
+.item {
+  list-style: none;
+  color: #fff;
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.noHistory {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #fff;
+}
