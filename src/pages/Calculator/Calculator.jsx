@@ -2,13 +2,14 @@ import { Display } from "../../components/calc/Display/Display";
 import { Buttons } from "../../components/calc/Buttons/Buttons";
 import { History } from "../../components/calc/History/History";
 import { useState, useEffect } from "react";
+// import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export function Calculator() {
   const [input, setInput] = useState("");
   const [operation, setOperation] = useState(null);
   const [result, setResult] = useState("");
   const [secInput, setSecInput] = useState("");
-  const [toggleHistory, setToggleHistory] = useState(false);
+  // const [toggleHistory, setToggleHistory] = useState(false);
   const [history, setHistory] = useState(() => {
     const storedHistory = localStorage.getItem("calculatorHistory");
     return storedHistory ? JSON.parse(storedHistory) : [];
@@ -83,9 +84,9 @@ export function Calculator() {
     }
   }
 
-  function historyHandler() {
-    setToggleHistory(!toggleHistory);
-  }
+  // function historyHandler() {
+  //   setToggleHistory(!toggleHistory);
+  // }
 
   function clearHistory() {
     setHistory([]);
@@ -97,7 +98,7 @@ export function Calculator() {
       <Display
         input={input}
         secInput={secInput}
-        historyHandler={historyHandler}
+        // historyHandler={historyHandler}
       ></Display>
       <Buttons
         inputHandler={inputHandler}
@@ -108,10 +109,10 @@ export function Calculator() {
         backspaceHandler={backspaceHandler}
         toggleHandler={toggleHandler}
         dotHandler={dotHandler}
-        toggleHistory={toggleHistory}
+        // toggleHistory={toggleHistory}
       ></Buttons>
       <History
-        toggleHistory={toggleHistory}
+        // toggleHistory={toggleHistory}
         history={history}
         clearHistory={clearHistory}
       ></History>

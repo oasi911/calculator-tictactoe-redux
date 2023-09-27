@@ -1,11 +1,11 @@
 import css from "./History.module.css";
 import { Scrollbars } from "react-custom-scrollbars";
+import { useIsHistoryOpen } from "../../useIsHistoryOpen";
 
-export function History({ toggleHistory, history, clearHistory }) {
-  const historyClassName = toggleHistory ? css.historyOpen : css.historyClose;
-  const historySecClassName = toggleHistory
-    ? css.historySecOpen
-    : css.historySecClose;
+export function History({ history, clearHistory }) {
+  const isOpen = useIsHistoryOpen();
+  const historyClassName = isOpen ? css.historyOpen : css.historyClose;
+  const historySecClassName = isOpen ? css.historySecOpen : css.historySecClose;
 
   return (
     <div className={historyClassName}>

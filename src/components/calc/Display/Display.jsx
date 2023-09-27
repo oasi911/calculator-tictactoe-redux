@@ -1,6 +1,14 @@
 import css from "./Display.module.css";
+import { useDispatch } from "react-redux";
+import { toggleHistory } from "../../../redux/actions";
 
-export function Display({ input, secInput, historyHandler }) {
+export function Display({ input, secInput }) {
+  const dispatch = useDispatch();
+
+  const handleHistoryBtn = () => {
+    dispatch(toggleHistory());
+  };
+
   return (
     <div className={css.display}>
       <input
@@ -11,7 +19,7 @@ export function Display({ input, secInput, historyHandler }) {
         value={secInput}
         readOnly
       ></input>
-      <button className={css.history} type="button" onClick={historyHandler}>
+      <button className={css.history} type="button" onClick={handleHistoryBtn}>
         ⟳
       </button>
       <input

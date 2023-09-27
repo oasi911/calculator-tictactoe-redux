@@ -1,4 +1,5 @@
 import css from "./Buttons.module.css";
+import { useIsHistoryOpen } from "../../useIsHistoryOpen";
 
 export function Buttons({
   inputHandler,
@@ -9,9 +10,9 @@ export function Buttons({
   backspaceHandler,
   toggleHandler,
   dotHandler,
-  toggleHistory,
 }) {
-  const buttonsStyle = toggleHistory ? css.hiddenButtons : css.buttons;
+  const isOpen = useIsHistoryOpen();
+  const buttonsStyle = isOpen ? css.hiddenButtons : css.buttons;
 
   return (
     <div className={buttonsStyle}>

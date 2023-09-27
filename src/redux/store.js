@@ -1,24 +1,6 @@
 import { createStore } from "redux";
+import { devToolsEnhancer } from "@redux-devtools/extension";
+import { rootReducer } from "./reducer";
 
-const getStoredHistory = () => {
-  const storedHistory = localStorage.getItem("calculatorHistory");
-  return storedHistory ? JSON.parse(storedHistory) : [];
-};
-
-const initialState = {
-  input: "",
-  operation: null,
-  result: "",
-  secInput: "",
-  toggleHistory: false,
-  history: getStoredHistory(),
-  winLine: [],
-  currentMove: 0,
-  gameHistory: [Array(9).fill(null)],
-};
-
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
-
-export const store = createStore(rootReducer);
+const enhancer = devToolsEnhancer();
+export const store = createStore(rootReducer, enhancer);
