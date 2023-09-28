@@ -1,8 +1,9 @@
 import css from "./Buttons.module.css";
+import { useDispatch } from "react-redux";
+import { handleInput } from "../../../redux/actions";
 import { useIsHistoryOpen } from "../../useIsHistoryOpen";
 
 export function Buttons({
-  inputHandler,
   operationHandler,
   equalHandler,
   ceHandler,
@@ -11,8 +12,14 @@ export function Buttons({
   toggleHandler,
   dotHandler,
 }) {
+  const dispatch = useDispatch();
   const isOpen = useIsHistoryOpen();
   const buttonsStyle = isOpen ? css.hiddenButtons : css.buttons;
+
+  const inputHandler = (e) => {
+    const digit = e.target.innerText;
+    dispatch(handleInput(digit));
+  };
 
   return (
     <div className={buttonsStyle}>
