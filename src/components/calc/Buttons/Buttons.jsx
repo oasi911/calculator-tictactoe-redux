@@ -1,11 +1,14 @@
 import css from "./Buttons.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleInput } from "../../../redux/actions";
+import { handleOperation } from "../../../redux/actions";
+import { handleEqual } from "../../../redux/actions";
+import { input } from "../../../redux/selectors";
+import { operation } from "../../../redux/selectors";
+import { result } from "../../../redux/selectors";
 import { useIsHistoryOpen } from "../../useIsHistoryOpen";
 
 export function Buttons({
-  operationHandler,
-  equalHandler,
   ceHandler,
   cHandler,
   backspaceHandler,
@@ -13,12 +16,47 @@ export function Buttons({
   dotHandler,
 }) {
   const dispatch = useDispatch();
+  const inputValue = useSelector(input);
+  const operationValue = useSelector(operation);
+  const resultValue = useSelector(result);
+
   const isOpen = useIsHistoryOpen();
   const buttonsStyle = isOpen ? css.hiddenButtons : css.buttons;
 
   const inputHandler = (e) => {
     const digit = e.target.innerText;
     dispatch(handleInput(digit));
+  };
+
+  const operationHandler = (e) => {
+    const digit = e.target.innerText;
+    dispatch(handleOperation(digit));
+  };
+
+  const equalHandler = () => {
+    if (operationValue && inputValue !== "") {
+      const num1 = parseFloat(resultValue);
+      const num2 = parseFloat(inputValue);
+
+      let total;
+      switch (operationValue) {
+        case "+":
+          total = num1 + num2;
+          break;
+        case "-":
+          total = num1 - num2;
+          break;
+        case "x":
+          total = num1 * num2;
+          break;
+        case "/":
+          total = num1 / num2;
+          break;
+        default:
+          break;
+      }
+      dispatch(handleEqual(total));
+    }
   };
 
   return (
