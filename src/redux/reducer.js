@@ -1,5 +1,5 @@
 const initialState = {
-  input: "",
+  input: "0",
   operation: "",
   result: "",
   secInput: "",
@@ -11,7 +11,8 @@ export const rootReducer = (state = initialState, action) => {
     case "input/handleInput": {
       return {
         ...state,
-        input: state.input + action.payload,
+        input:
+          state.input === "0" ? action.payload : state.input + action.payload,
       };
     }
     case "operation/handleOperation": {
@@ -20,7 +21,7 @@ export const rootReducer = (state = initialState, action) => {
         operation: action.payload,
         secInput: state.input + " " + action.payload,
         result: state.input,
-        input: "",
+        input: "0",
       };
     }
     case "input/handleEqual": {
@@ -28,6 +29,39 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         input: action.payload,
         secInput: "",
+      };
+    }
+    case "input/handleCe": {
+      return {
+        ...state,
+        input: "0",
+      };
+    }
+    case "input/handleC": {
+      return {
+        ...state,
+        operation: "",
+        input: "0",
+        result: "",
+        secInput: "",
+      };
+    }
+    case "input/handleBackspace": {
+      return {
+        ...state,
+        input: state.input.slice(0, -1),
+      };
+    }
+    case "input/handleToggle": {
+      return {
+        ...state,
+        input: state.input * -1,
+      };
+    }
+    case "input/handleDot": {
+      return {
+        ...state,
+        input: state.input + ".",
       };
     }
     case "history/toggleHistory": {
@@ -42,11 +76,6 @@ export const rootReducer = (state = initialState, action) => {
 };
 
 // const initialState = {
-//   input: "",
-//   operation: null,
-//   result: "",
-//   secInput: "",
-// isHistoryOpen: false,
 //   history: getStoredHistory(),
 //   winLine: [],
 //   currentMove: 0,

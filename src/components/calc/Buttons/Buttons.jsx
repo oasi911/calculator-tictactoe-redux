@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleInput } from "../../../redux/actions";
 import { handleOperation } from "../../../redux/actions";
 import { handleEqual } from "../../../redux/actions";
+import { handleCe } from "../../../redux/actions";
+import { handleC } from "../../../redux/actions";
+import { handleBackspace } from "../../../redux/actions";
+import { handleToggle } from "../../../redux/actions";
+import { handleDot } from "../../../redux/actions";
 import { input } from "../../../redux/selectors";
 import { operation } from "../../../redux/selectors";
 import { result } from "../../../redux/selectors";
-import { useIsHistoryOpen } from "../../useIsHistoryOpen";
+import { useIsHistoryOpen } from "../useIsHistoryOpen";
 
-export function Buttons({
-  ceHandler,
-  cHandler,
-  backspaceHandler,
-  toggleHandler,
-  dotHandler,
-}) {
+export function Buttons() {
   const dispatch = useDispatch();
   const inputValue = useSelector(input);
   const operationValue = useSelector(operation);
@@ -32,6 +31,26 @@ export function Buttons({
     const digit = e.target.innerText;
     dispatch(handleOperation(digit));
   };
+
+  function ceHandler() {
+    dispatch(handleCe());
+  }
+
+  function cHandler() {
+    dispatch(handleC());
+  }
+
+  function backspaceHandler() {
+    dispatch(handleBackspace());
+  }
+
+  function toggleHandler() {
+    dispatch(handleToggle());
+  }
+
+  function dotHandler() {
+    dispatch(handleDot());
+  }
 
   const equalHandler = () => {
     if (operationValue && inputValue !== "") {
@@ -61,64 +80,64 @@ export function Buttons({
 
   return (
     <div className={buttonsStyle}>
-      <button className={css.calcBtn} onClick={ceHandler}>
+      <button type="button" className={css.calcBtn} onClick={ceHandler}>
         CE
       </button>
-      <button className={css.calcBtn} onClick={cHandler}>
+      <button type="button" className={css.calcBtn} onClick={cHandler}>
         C
       </button>
-      <button className={css.calcBtn} onClick={backspaceHandler}>
+      <button type="button" className={css.calcBtn} onClick={backspaceHandler}>
         ⌫
       </button>
-      <button className={css.mathBtn} onClick={operationHandler}>
+      <button type="button" className={css.mathBtn} onClick={operationHandler}>
         /
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         7
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         8
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         9
       </button>
-      <button className={css.mathBtn} onClick={operationHandler}>
+      <button type="button" className={css.mathBtn} onClick={operationHandler}>
         x
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         4
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         5
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         6
       </button>
-      <button className={css.mathBtn} onClick={operationHandler}>
+      <button type="button" className={css.mathBtn} onClick={operationHandler}>
         -
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         1
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         2
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         3
       </button>
-      <button className={css.mathBtn} onClick={operationHandler}>
+      <button type="button" className={css.mathBtn} onClick={operationHandler}>
         +
       </button>
-      <button className={css.calcBtn} onClick={toggleHandler}>
+      <button type="button" className={css.calcBtn} onClick={toggleHandler}>
         ±
       </button>
-      <button className={css.numberBtn} onClick={inputHandler}>
+      <button type="button" className={css.numberBtn} onClick={inputHandler}>
         0
       </button>
-      <button className={css.calcBtn} onClick={dotHandler}>
+      <button type="button" className={css.calcBtn} onClick={dotHandler}>
         .
       </button>
-      <button className={css.mathBtn} onClick={equalHandler}>
+      <button type="button" className={css.mathBtn} onClick={equalHandler}>
         =
       </button>
     </div>

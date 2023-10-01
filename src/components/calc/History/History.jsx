@@ -1,6 +1,6 @@
 import css from "./History.module.css";
 import { Scrollbars } from "react-custom-scrollbars";
-import { useIsHistoryOpen } from "../../useIsHistoryOpen";
+import { useIsHistoryOpen } from "../useIsHistoryOpen";
 
 export function History({ history, clearHistory }) {
   const isOpen = useIsHistoryOpen();
@@ -27,7 +27,7 @@ export function History({ history, clearHistory }) {
             </ul>
           )}
         </Scrollbars>
-        <button className={css.clearBtn} onClick={clearHistory}>
+        <button type="button" className={css.clearBtn} onClick={clearHistory}>
           🗑
         </button>
       </div>

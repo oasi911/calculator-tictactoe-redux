@@ -19,6 +19,36 @@ export const handleEqual = (total) => {
   };
 };
 
+export const handleCe = () => {
+  return {
+    type: "input/handleCe",
+  };
+};
+
+export const handleC = () => {
+  return {
+    type: "input/handleC",
+  };
+};
+
+export const handleBackspace = () => {
+  return {
+    type: "input/handleBackspace",
+  };
+};
+
+export const handleToggle = () => {
+  return {
+    type: "input/handleToggle",
+  };
+};
+
+export const handleDot = () => {
+  return {
+    type: "input/handleDot",
+  };
+};
+
 export const toggleHistory = () => {
   return {
     type: "history/toggleHistory",
