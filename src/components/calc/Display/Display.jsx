@@ -2,10 +2,12 @@ import css from "./Display.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHistory } from "../../../redux/actions";
 import { input } from "../../../redux/selectors";
+import { secInput } from "../../../redux/selectors";
 
-export function Display({ secInput }) {
+export function Display() {
   const dispatch = useDispatch();
-  const inputValue = useSelector(input)
+  const inputValue = useSelector(input);
+  const secInputValue = useSelector(secInput);
 
   const handleHistoryBtn = () => {
     dispatch(toggleHistory());
@@ -18,7 +20,7 @@ export function Display({ secInput }) {
         type="text"
         maxLength={14}
         autoComplete="off"
-        value={secInput}
+        value={secInputValue}
         readOnly
       ></input>
       <button className={css.history} type="button" onClick={handleHistoryBtn}>

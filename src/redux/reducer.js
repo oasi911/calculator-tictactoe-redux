@@ -2,6 +2,7 @@ const initialState = {
   input: "",
   operation: "",
   result: "",
+  secInput: "",
   isHistoryOpen: false,
 };
 
@@ -17,6 +18,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         operation: action.payload,
+        secInput: state.input + " " + action.payload,
         result: state.input,
         input: "",
       };
@@ -25,6 +27,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         input: action.payload,
+        secInput: "",
       };
     }
     case "history/toggleHistory": {

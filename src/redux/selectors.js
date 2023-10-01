@@ -4,4 +4,6 @@ export const operation = (state) => state.operation;
 
 export const result = (state) => state.result;
 
+export const secInput = (state) => state.secInput;
+
 export const isHistoryOpen = (state) => state.isHistoryOpen;
