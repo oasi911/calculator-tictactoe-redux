@@ -54,3 +54,16 @@ export const toggleHistory = () => {
     type: "history/toggleHistory",
   };
 };
+
+export const setHistory = (history) => {
+  return {
+    type: "history/setHistory",
+    payload: history,
+  };
+};
+
+export const clearHistory = () => {
+  return {
+    type: "history/clearHistory",
+  };
+};

@@ -8,6 +8,7 @@ import { handleC } from "../../../redux/actions";
 import { handleBackspace } from "../../../redux/actions";
 import { handleToggle } from "../../../redux/actions";
 import { handleDot } from "../../../redux/actions";
+import { setHistory } from "../../../redux/actions";
 import { input } from "../../../redux/selectors";
 import { operation } from "../../../redux/selectors";
 import { result } from "../../../redux/selectors";
@@ -75,6 +76,9 @@ export function Buttons() {
           break;
       }
       dispatch(handleEqual(total));
+
+      const operationString = `${resultValue} ${operationValue} ${inputValue} = ${total}`;
+      dispatch(setHistory(operationString));
     }
   };
 

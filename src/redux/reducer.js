@@ -4,6 +4,7 @@ const initialState = {
   result: "",
   secInput: "",
   isHistoryOpen: false,
+  history: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -68,6 +69,18 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isHistoryOpen: !state.isHistoryOpen,
+      };
+    }
+    case "history/setHistory": {
+      return {
+        ...state,
+        history: [...state.history, action.payload],
+      };
+    }
+    case "history/clearHistory": {
+      return {
+        ...state,
+        history: [],
       };
     }
     default:
