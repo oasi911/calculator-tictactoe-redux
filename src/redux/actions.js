@@ -67,3 +67,10 @@ export const clearHistory = () => {
     type: "history/clearHistory",
   };
 };
+
+export const loadHistory = () => {
+  return {
+    type: "history/loadHistory",
+    payload: JSON.parse(localStorage.getItem("calculatorHistory")) || [],
+  };
+};

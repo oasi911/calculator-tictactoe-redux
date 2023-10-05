@@ -83,13 +83,18 @@ export const rootReducer = (state = initialState, action) => {
         history: [],
       };
     }
+    case "history/loadHistory": {
+      return {
+        ...state,
+        history: action.payload,
+      };
+    }
     default:
       return state;
   }
 };
 
 // const initialState = {
-//   history: getStoredHistory(),
 //   winLine: [],
 //   currentMove: 0,
 //   gameHistory: [Array(9).fill(null)],

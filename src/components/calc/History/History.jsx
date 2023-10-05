@@ -1,19 +1,29 @@
 import css from "./History.module.css";
 import { Scrollbars } from "react-custom-scrollbars";
 import { useIsHistoryOpen } from "../useIsHistoryOpen";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearHistory } from "../../../redux/actions";
+import { loadHistory } from "../../../redux/actions";
 import { history } from "../../../redux/selectors";
 
 export function History() {
   const dispatch = useDispatch();
+
   const historyValue = useSelector(history);
+
   const isOpen = useIsHistoryOpen();
+
+  useEffect(() => {
+    dispatch(loadHistory());
+  }, [dispatch]);
+
   const historyClassName = isOpen ? css.historyOpen : css.historyClose;
   const historySecClassName = isOpen ? css.historySecOpen : css.historySecClose;
 
   function removeHistory() {
     dispatch(clearHistory());
+    localStorage.clear();
   }
 
   return (
