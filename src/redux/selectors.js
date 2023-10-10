@@ -13,3 +13,5 @@ export const history = (state) => state.history;
 export const currentMove = (state) => state.currentMove;
 
 export const gameHistory = (state) => state.gameHistory;
+
+export const winLine = (state) => state.winLine;

@@ -89,4 +89,9 @@ export const jumpTo = (move) => {
   };
 };
 
-
+export const setWinLine = (line) => {
+  return {
+    type: "ticTacToe/setWinLine",
+    payload: line,
+  };
+};

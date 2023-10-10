@@ -1,9 +1,13 @@
 import { Square } from "../Square/Square";
-import { useState } from "react";
-import css from './Board.module.css'
+import css from "./Board.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setWinLine } from "../../../redux/actions";
+import { winLine } from "../../../redux/selectors";
 
 export function Board({ xIsNext, squares, onPlay }) {
-  const [winLine, setWinLine] = useState([]);
+  const dispatch = useDispatch();
+
+  const winLineValue = useSelector(winLine);
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -19,9 +23,9 @@ export function Board({ xIsNext, squares, onPlay }) {
 
     const winnerInfo = calculateWinner(nextSquares);
     if (winnerInfo) {
-      setWinLine(winnerInfo.winLine);
+      dispatch(setWinLine(winnerInfo.winLine));
     } else {
-      setWinLine([]);
+      dispatch(setWinLine([]));
     }
 
     onPlay(nextSquares);
@@ -69,51 +73,51 @@ export function Board({ xIsNext, squares, onPlay }) {
         <Square
           value={squares[0]}
           onSquareClick={() => handleClick(0)}
-          isWinSquare={winLine.includes(0)}
+          isWinSquare={winLineValue.includes(0)}
         />
         <Square
           value={squares[1]}
           onSquareClick={() => handleClick(1)}
-          isWinSquare={winLine.includes(1)}
+          isWinSquare={winLineValue.includes(1)}
         />
         <Square
           value={squares[2]}
           onSquareClick={() => handleClick(2)}
-          isWinSquare={winLine.includes(2)}
+          isWinSquare={winLineValue.includes(2)}
         />
       </div>
       <div className={css.boardRow}>
         <Square
           value={squares[3]}
           onSquareClick={() => handleClick(3)}
-          isWinSquare={winLine.includes(3)}
+          isWinSquare={winLineValue.includes(3)}
         />
         <Square
           value={squares[4]}
           onSquareClick={() => handleClick(4)}
-          isWinSquare={winLine.includes(4)}
+          isWinSquare={winLineValue.includes(4)}
         />
         <Square
           value={squares[5]}
           onSquareClick={() => handleClick(5)}
-          isWinSquare={winLine.includes(5)}
+          isWinSquare={winLineValue.includes(5)}
         />
       </div>
       <div className={css.boardRow}>
         <Square
           value={squares[6]}
           onSquareClick={() => handleClick(6)}
-          isWinSquare={winLine.includes(6)}
+          isWinSquare={winLineValue.includes(6)}
         />
         <Square
           value={squares[7]}
           onSquareClick={() => handleClick(7)}
-          isWinSquare={winLine.includes(7)}
+          isWinSquare={winLineValue.includes(7)}
         />
         <Square
           value={squares[8]}
           onSquareClick={() => handleClick(8)}
-          isWinSquare={winLine.includes(8)}
+          isWinSquare={winLineValue.includes(8)}
         />
       </div>
     </>

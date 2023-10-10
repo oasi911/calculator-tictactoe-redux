@@ -7,6 +7,7 @@ const initialState = {
   history: [],
   gameHistory: [Array(9).fill(null)],
   currentMove: 0,
+  winLine: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -108,11 +109,13 @@ export const rootReducer = (state = initialState, action) => {
         currentMove: action.payload,
       };
     }
+    case "ticTacToe/setWinLine": {
+      return {
+        ...state,
+        winLine: action.payload,
+      };
+    }
     default:
       return state;
   }
 };
-
-// const initialState = {
-//   winLine: [],
-// };
