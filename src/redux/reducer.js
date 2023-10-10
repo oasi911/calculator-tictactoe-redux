@@ -5,6 +5,7 @@ const initialState = {
   secInput: "",
   isHistoryOpen: false,
   history: [],
+  gameHistory: [Array(9).fill(null)],
   currentMove: 0,
 };
 
@@ -90,6 +91,17 @@ export const rootReducer = (state = initialState, action) => {
         history: action.payload,
       };
     }
+    case "ticTacToe/setHistory": {
+      const nextHistory = [
+        ...state.gameHistory.slice(0, state.currentMove + 1),
+        action.payload,
+      ];
+      return {
+        ...state,
+        gameHistory: nextHistory,
+        currentMove: nextHistory.length - 1,
+      };
+    }
     case "ticTacToe/jumpTo": {
       return {
         ...state,
@@ -103,6 +115,4 @@ export const rootReducer = (state = initialState, action) => {
 
 // const initialState = {
 //   winLine: [],
-//   currentMove: 0,
-//   gameHistory: [Array(9).fill(null)],
 // };

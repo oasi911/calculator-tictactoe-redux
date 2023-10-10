@@ -75,6 +75,13 @@ export const loadHistory = () => {
   };
 };
 
+export const setGameHistory = (nextSquares) => {
+  return {
+    type: "ticTacToe/setHistory",
+    payload: nextSquares,
+  };
+};
+
 export const jumpTo = (move) => {
   return {
     type: "ticTacToe/jumpTo",

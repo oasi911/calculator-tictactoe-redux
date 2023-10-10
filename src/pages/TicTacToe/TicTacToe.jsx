@@ -1,34 +1,28 @@
 import css from "./TicTacToe.module.css";
 import { Board } from "../../components/tictactoe/Board/Board";
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { jumpTo } from "../../redux/actions";
-import { currentMove } from "../../redux/selectors";
+import { setGameHistory } from "../../redux/actions";
+import { currentMove, gameHistory } from "../../redux/selectors";
 
 export function TicTacToe() {
   const dispatch = useDispatch();
 
   const currentMoveValue = useSelector(currentMove);
-  // const [currentMove, setCurrentMove] = useState(0);
-  const [history, setHistory] = useState([Array(9).fill(null)]);
-  const xIsNext = currentMoveValue % 2 === 0;
-  const currentSquares = history[currentMoveValue];
+  const gameHistoryValue = useSelector(gameHistory);
 
-  function handlePlay(nextSquares) {
-    const nextHistory = [
-      ...history.slice(0, currentMoveValue + 1),
-      nextSquares,
-    ];
-    setHistory(nextHistory);
-    dispatch(jumpTo(nextHistory.length - 1));
-    // setCurrentMove(nextHistory.length - 1);
-  }
+  const xIsNext = currentMoveValue % 2 === 0;
+  const currentSquares = gameHistoryValue[currentMoveValue];
+
+  const handlePlay = (nextSquares) => {
+    dispatch(setGameHistory(nextSquares));
+  };
 
   const handleJumpTo = (move) => {
     dispatch(jumpTo(move));
   };
 
-  const moves = history.map((squares, move) => {
+  const moves = gameHistoryValue.map((squares, move) => {
     let description;
     if (move > 0) {
       description = "Go to move #" + move;
