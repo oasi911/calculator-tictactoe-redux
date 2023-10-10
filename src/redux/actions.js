@@ -74,3 +74,12 @@ export const loadHistory = () => {
     payload: JSON.parse(localStorage.getItem("calculatorHistory")) || [],
   };
 };
+
+export const jumpTo = (move) => {
+  return {
+    type: "ticTacToe/jumpTo",
+    payload: move,
+  };
+};
+
+

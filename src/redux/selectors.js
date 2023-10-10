@@ -9,3 +9,5 @@ export const secInput = (state) => state.secInput;
 export const isHistoryOpen = (state) => state.isHistoryOpen;
 
 export const history = (state) => state.history;
+
+export const currentMove = (state) => state.currentMove;

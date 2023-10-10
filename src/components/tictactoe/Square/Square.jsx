@@ -6,7 +6,7 @@ export function Square({ value, onSquareClick, isWinSquare }) {
   };
 
   return (
-    <button className={css.square} onClick={onSquareClick} style={styles}>
+    <button type="button" className={css.square} onClick={onSquareClick} style={styles}>
       {value}
     </button>
   );

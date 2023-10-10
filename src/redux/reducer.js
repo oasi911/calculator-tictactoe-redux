@@ -5,6 +5,7 @@ const initialState = {
   secInput: "",
   isHistoryOpen: false,
   history: [],
+  currentMove: 0,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -87,6 +88,12 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         history: action.payload,
+      };
+    }
+    case "ticTacToe/jumpTo": {
+      return {
+        ...state,
+        currentMove: action.payload,
       };
     }
     default:
