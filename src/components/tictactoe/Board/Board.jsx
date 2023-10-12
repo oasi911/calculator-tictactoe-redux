@@ -2,12 +2,13 @@ import { Square } from "../Square/Square";
 import css from "./Board.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setWinLine } from "../../../redux/actions";
-import { winLine } from "../../../redux/selectors";
+import { winLine, gameHistory } from "../../../redux/selectors";
 
 export function Board({ xIsNext, squares, onPlay }) {
   const dispatch = useDispatch();
 
   const winLineValue = useSelector(winLine);
+  const gameHistoryValue = useSelector(gameHistory);
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -59,15 +60,21 @@ export function Board({ xIsNext, squares, onPlay }) {
   }
 
   const winner = calculateWinner(squares);
+  const historyNotNull = gameHistoryValue[gameHistoryValue.length - 1].every(
+    (value) => value !== null
+  );
   let status;
+
   if (winner) {
     status = "Winner: " + winner.winSymbol;
+  } else if (winLineValue.length === 0 && historyNotNull) {
+    status = "Try again";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
   return (
-    <div classname={css.gameMain}>
+    <div className={css.gameMain}>
       <div className={css.status}>{status}</div>
       <div className={css.boardRow}>
         <Square
@@ -85,7 +92,6 @@ export function Board({ xIsNext, squares, onPlay }) {
           onSquareClick={() => handleClick(2)}
           isWinSquare={winLineValue.includes(2)}
         />
-
         <Square
           value={squares[3]}
           onSquareClick={() => handleClick(3)}
@@ -101,7 +107,6 @@ export function Board({ xIsNext, squares, onPlay }) {
           onSquareClick={() => handleClick(5)}
           isWinSquare={winLineValue.includes(5)}
         />
-
         <Square
           value={squares[6]}
           onSquareClick={() => handleClick(6)}
