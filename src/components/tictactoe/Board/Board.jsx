@@ -67,7 +67,7 @@ export function Board({ xIsNext, squares, onPlay }) {
   }
 
   return (
-    <>
+    <div classname={css.gameMain}>
       <div className={css.status}>{status}</div>
       <div className={css.boardRow}>
         <Square
@@ -85,8 +85,7 @@ export function Board({ xIsNext, squares, onPlay }) {
           onSquareClick={() => handleClick(2)}
           isWinSquare={winLineValue.includes(2)}
         />
-      </div>
-      <div className={css.boardRow}>
+
         <Square
           value={squares[3]}
           onSquareClick={() => handleClick(3)}
@@ -102,8 +101,7 @@ export function Board({ xIsNext, squares, onPlay }) {
           onSquareClick={() => handleClick(5)}
           isWinSquare={winLineValue.includes(5)}
         />
-      </div>
-      <div className={css.boardRow}>
+
         <Square
           value={squares[6]}
           onSquareClick={() => handleClick(6)}
@@ -120,6 +118,6 @@ export function Board({ xIsNext, squares, onPlay }) {
           isWinSquare={winLineValue.includes(8)}
         />
       </div>
-    </>
+    </div>
   );
 }

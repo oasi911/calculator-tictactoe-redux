@@ -1,0 +1,7 @@
+.gameInfo {
+  margin-left: 20px;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 5px;
+}

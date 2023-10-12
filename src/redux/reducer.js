@@ -107,6 +107,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currentMove: action.payload,
+        winLine: [],
       };
     }
     case "ticTacToe/setWinLine": {
