@@ -75,23 +75,3 @@ export const loadHistory = () => {
   };
 };
 
-export const setGameHistory = (nextSquares) => {
-  return {
-    type: "ticTacToe/setHistory",
-    payload: nextSquares,
-  };
-};
-
-export const jumpTo = (move) => {
-  return {
-    type: "ticTacToe/jumpTo",
-    payload: move,
-  };
-};
-
-export const setWinLine = (line) => {
-  return {
-    type: "ticTacToe/setWinLine",
-    payload: line,
-  };
-};

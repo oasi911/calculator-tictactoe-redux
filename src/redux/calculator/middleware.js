@@ -5,7 +5,7 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
     const currentState = store.getState();
     localStorage.setItem(
       "calculatorHistory",
-      JSON.stringify(currentState.history)
+      JSON.stringify(currentState.calculator.history)
     );
   }
 
