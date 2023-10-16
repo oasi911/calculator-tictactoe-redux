@@ -5,12 +5,9 @@ const initialState = {
   secInput: "",
   isHistoryOpen: false,
   history: [],
-  gameHistory: [Array(9).fill(null)],
-  currentMove: 0,
-  winLine: [],
 };
 
-export const rootReducer = (state = initialState, action) => {
+export const calculatorReducer = (state = initialState, action) => {
   switch (action.type) {
     case "input/handleInput": {
       return {
@@ -90,30 +87,6 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         history: action.payload,
-      };
-    }
-    case "ticTacToe/setHistory": {
-      const nextHistory = [
-        ...state.gameHistory.slice(0, state.currentMove + 1),
-        action.payload,
-      ];
-      return {
-        ...state,
-        gameHistory: nextHistory,
-        currentMove: nextHistory.length - 1,
-      };
-    }
-    case "ticTacToe/jumpTo": {
-      return {
-        ...state,
-        currentMove: action.payload,
-        winLine: [],
-      };
-    }
-    case "ticTacToe/setWinLine": {
-      return {
-        ...state,
-        winLine: action.payload,
       };
     }
     default:

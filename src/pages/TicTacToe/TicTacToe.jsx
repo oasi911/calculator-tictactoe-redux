@@ -2,7 +2,7 @@ import css from "./TicTacToe.module.css";
 import { Board } from "../../components/tictactoe/Board/Board";
 import { History } from "../../components/tictactoe/History/History";
 import { useSelector, useDispatch } from "react-redux";
-import { setGameHistory } from "../../redux/actions";
+import { setGameHistory } from "../../redux/tictactoe/actions";
 import { currentMove, gameHistory } from "../../redux/selectors";
 
 export function TicTacToe() {

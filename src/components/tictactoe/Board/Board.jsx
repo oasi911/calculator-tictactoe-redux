@@ -1,7 +1,7 @@
 import { Square } from "../Square/Square";
 import css from "./Board.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setWinLine } from "../../../redux/actions";
+import { setWinLine } from "../../../redux/tictactoe/actions";
 import { winLine, gameHistory } from "../../../redux/selectors";
 
 export function Board({ xIsNext, squares, onPlay }) {

@@ -1,8 +1,7 @@
 import css from "./Display.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHistory } from "../../../redux/actions";
-import { input } from "../../../redux/selectors";
-import { secInput } from "../../../redux/selectors";
+import { toggleHistory } from "../../../redux/calculator/actions";
+import { input, secInput } from "../../../redux/selectors";
 
 export function Display() {
   const dispatch = useDispatch();

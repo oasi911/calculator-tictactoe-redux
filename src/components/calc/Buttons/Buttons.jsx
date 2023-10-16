@@ -1,17 +1,17 @@
 import css from "./Buttons.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { handleInput } from "../../../redux/actions";
-import { handleOperation } from "../../../redux/actions";
-import { handleEqual } from "../../../redux/actions";
-import { handleCe } from "../../../redux/actions";
-import { handleC } from "../../../redux/actions";
-import { handleBackspace } from "../../../redux/actions";
-import { handleToggle } from "../../../redux/actions";
-import { handleDot } from "../../../redux/actions";
-import { setHistory } from "../../../redux/actions";
-import { input } from "../../../redux/selectors";
-import { operation } from "../../../redux/selectors";
-import { result } from "../../../redux/selectors";
+import {
+  handleInput,
+  handleOperation,
+  handleEqual,
+  handleCe,
+  handleC,
+  handleBackspace,
+  handleToggle,
+  handleDot,
+  setHistory,
+} from "../../../redux/calculator/actions";
+import { input, operation, result } from "../../../redux/selectors";
 import { useIsHistoryOpen } from "../useIsHistoryOpen";
 
 export function Buttons() {

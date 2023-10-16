@@ -1,7 +1,13 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import { rootReducer } from "./reducer";
-import { localStorageMiddleware } from "./middleware";
+import { localStorageMiddleware } from "./calculator/middleware";
+import { calculatorReducer } from "./calculator/reducer";
+import { gameReducer } from "./tictactoe/reducer";
+
+const rootReducer = combineReducers({
+  calculator: calculatorReducer,
+  ticTacToe: gameReducer,
+});
 
 const enhancers = composeWithDevTools(applyMiddleware(localStorageMiddleware));
 
