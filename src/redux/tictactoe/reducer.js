@@ -1,3 +1,5 @@
+import { setGameHistory, jumpTo, setWinLine } from "./actions";
+
 const initialState = {
   gameHistory: [Array(9).fill(null)],
   currentMove: 0,
@@ -6,7 +8,7 @@ const initialState = {
 
 export const gameReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "gameHistory/setHistory": {
+    case setGameHistory.type: {
       const nextHistory = [
         ...state.gameHistory.slice(0, state.currentMove + 1),
         action.payload,
@@ -17,14 +19,14 @@ export const gameReducer = (state = initialState, action) => {
         currentMove: nextHistory.length - 1,
       };
     }
-    case "gameHistory/jumpTo": {
+    case jumpTo.type: {
       return {
         ...state,
         currentMove: action.payload,
         winLine: [],
       };
     }
-    case "winLine/setWinLine": {
+    case setWinLine.type: {
       return {
         ...state,
         winLine: action.payload,

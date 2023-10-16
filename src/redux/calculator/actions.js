@@ -1,77 +1,29 @@
-export const handleInput = (number) => {
-  return {
-    type: "input/handleInput",
-    payload: number,
-  };
-};
+import { createAction } from "@reduxjs/toolkit";
 
-export const handleOperation = (opSymbol) => {
-  return {
-    type: "operation/handleOperation",
-    payload: opSymbol,
-  };
-};
+export const handleInput = createAction("input/handleInput");
 
-export const handleEqual = (total) => {
-  return {
-    type: "input/handleEqual",
-    payload: total,
-  };
-};
+export const handleOperation = createAction("operation/handleOperation");
 
-export const handleCe = () => {
-  return {
-    type: "input/handleCe",
-  };
-};
+export const handleEqual = createAction("input/handleEqual");
 
-export const handleC = () => {
-  return {
-    type: "input/handleC",
-  };
-};
+export const handleCe = createAction("input/handleCe");
 
-export const handleBackspace = () => {
-  return {
-    type: "input/handleBackspace",
-  };
-};
+export const handleC = createAction("input/handleC");
 
-export const handleToggle = () => {
-  return {
-    type: "input/handleToggle",
-  };
-};
+export const handleBackspace = createAction("input/handleBackspace");
 
-export const handleDot = () => {
-  return {
-    type: "input/handleDot",
-  };
-};
+export const handleToggle = createAction("input/handleToggle");
 
-export const toggleHistory = () => {
-  return {
-    type: "history/toggleHistory",
-  };
-};
+export const handleDot = createAction("input/handleDot");
 
-export const setHistory = (history) => {
-  return {
-    type: "history/setHistory",
-    payload: history,
-  };
-};
+export const toggleHistory = createAction("history/toggleHistory");
 
-export const clearHistory = () => {
-  return {
-    type: "history/clearHistory",
-  };
-};
+export const setHistory = createAction("history/setHistory");
 
-export const loadHistory = () => {
+export const clearHistory = createAction("history/clearHistory");
+
+export const loadHistory = createAction("history/loadHistory", () => {
   return {
-    type: "history/loadHistory",
     payload: JSON.parse(localStorage.getItem("calculatorHistory")) || [],
   };
-};
-
+});

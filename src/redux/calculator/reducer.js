@@ -1,3 +1,18 @@
+import {
+  handleInput,
+  handleOperation,
+  handleEqual,
+  handleCe,
+  handleC,
+  handleBackspace,
+  handleToggle,
+  handleDot,
+  toggleHistory,
+  setHistory,
+  clearHistory,
+  loadHistory,
+} from "./actions";
+
 const initialState = {
   input: "0",
   operation: "",
@@ -9,14 +24,14 @@ const initialState = {
 
 export const calculatorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "input/handleInput": {
+    case handleInput.type: {
       return {
         ...state,
         input:
           state.input === "0" ? action.payload : state.input + action.payload,
       };
     }
-    case "operation/handleOperation": {
+    case handleOperation.type: {
       return {
         ...state,
         operation: action.payload,
@@ -25,20 +40,20 @@ export const calculatorReducer = (state = initialState, action) => {
         input: "0",
       };
     }
-    case "input/handleEqual": {
+    case handleEqual.type: {
       return {
         ...state,
         input: action.payload,
         secInput: "",
       };
     }
-    case "input/handleCe": {
+    case handleCe.type: {
       return {
         ...state,
         input: "0",
       };
     }
-    case "input/handleC": {
+    case handleC.type: {
       return {
         ...state,
         operation: "",
@@ -47,43 +62,43 @@ export const calculatorReducer = (state = initialState, action) => {
         secInput: "",
       };
     }
-    case "input/handleBackspace": {
+    case handleBackspace.type: {
       return {
         ...state,
         input: state.input.slice(0, -1),
       };
     }
-    case "input/handleToggle": {
+    case handleToggle.type: {
       return {
         ...state,
         input: state.input * -1,
       };
     }
-    case "input/handleDot": {
+    case handleDot.type: {
       return {
         ...state,
         input: state.input + ".",
       };
     }
-    case "history/toggleHistory": {
+    case toggleHistory.type: {
       return {
         ...state,
         isHistoryOpen: !state.isHistoryOpen,
       };
     }
-    case "history/setHistory": {
+    case setHistory.type: {
       return {
         ...state,
         history: [...state.history, action.payload],
       };
     }
-    case "history/clearHistory": {
+    case clearHistory.type: {
       return {
         ...state,
         history: [],
       };
     }
-    case "history/loadHistory": {
+    case loadHistory.type: {
       return {
         ...state,
         history: action.payload,

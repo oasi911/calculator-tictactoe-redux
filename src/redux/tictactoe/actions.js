@@ -1,20 +1,7 @@
-export const setGameHistory = (nextSquares) => {
-  return {
-    type: "gameHistory/setHistory",
-    payload: nextSquares,
-  };
-};
+import { createAction } from "@reduxjs/toolkit";
 
-export const jumpTo = (move) => {
-  return {
-    type: "gameHistory/jumpTo",
-    payload: move,
-  };
-};
+export const setGameHistory = createAction("gameHistory/setHistory");
 
-export const setWinLine = (line) => {
-  return {
-    type: "winLine/setWinLine",
-    payload: line,
-  };
-};
+export const jumpTo = createAction("gameHistory/jumpTo");
+
+export const setWinLine = createAction("winLine/setWinLine");
