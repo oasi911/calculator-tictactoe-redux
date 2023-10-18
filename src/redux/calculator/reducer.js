@@ -1,3 +1,4 @@
+import { createReducer } from "@reduxjs/toolkit";
 import {
   handleInput,
   handleOperation,
@@ -22,89 +23,96 @@ const initialState = {
   history: [],
 };
 
-export const calculatorReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case handleInput.type: {
-      return {
-        ...state,
-        input:
-          state.input === "0" ? action.payload : state.input + action.payload,
-      };
-    }
-    case handleOperation.type: {
-      return {
-        ...state,
-        operation: action.payload,
-        secInput: state.input + " " + action.payload,
-        result: state.input,
-        input: "0",
-      };
-    }
-    case handleEqual.type: {
-      return {
-        ...state,
-        input: action.payload,
-        secInput: "",
-      };
-    }
-    case handleCe.type: {
-      return {
-        ...state,
-        input: "0",
-      };
-    }
-    case handleC.type: {
-      return {
-        ...state,
-        operation: "",
-        input: "0",
-        result: "",
-        secInput: "",
-      };
-    }
-    case handleBackspace.type: {
-      return {
-        ...state,
-        input: state.input.slice(0, -1),
-      };
-    }
-    case handleToggle.type: {
-      return {
-        ...state,
-        input: state.input * -1,
-      };
-    }
-    case handleDot.type: {
-      return {
-        ...state,
-        input: state.input + ".",
-      };
-    }
-    case toggleHistory.type: {
-      return {
-        ...state,
-        isHistoryOpen: !state.isHistoryOpen,
-      };
-    }
-    case setHistory.type: {
-      return {
-        ...state,
-        history: [...state.history, action.payload],
-      };
-    }
-    case clearHistory.type: {
-      return {
-        ...state,
-        history: [],
-      };
-    }
-    case loadHistory.type: {
-      return {
-        ...state,
-        history: action.payload,
-      };
-    }
-    default:
-      return state;
-  }
-};
+export const calculatorReducer = createReducer(initialState, {
+  [handleInput]: (state, action) => {
+    return {
+      ...state,
+      input:
+        state.input === "0" ? action.payload : state.input + action.payload,
+    };
+  },
+
+  [handleOperation]: (state, action) => {
+    return {
+      ...state,
+      operation: action.payload,
+      secInput: state.input + " " + action.payload,
+      result: state.input,
+      input: "0",
+    };
+  },
+
+  [handleEqual]: (state, action) => {
+    return {
+      ...state,
+      input: action.payload,
+      secInput: "",
+    };
+  },
+
+  [handleCe]: (state, action) => {
+    return {
+      ...state,
+      input: "0",
+    };
+  },
+
+  [handleC]: (state, action) => {
+    return {
+      ...state,
+      operation: "",
+      input: "0",
+      result: "",
+      secInput: "",
+    };
+  },
+
+  [handleBackspace]: (state, action) => {
+    return {
+      ...state,
+      input: state.input.slice(0, -1),
+    };
+  },
+
+  [handleToggle]: (state, action) => {
+    return {
+      ...state,
+      input: state.input * -1,
+    };
+  },
+
+  [handleDot]: (state, action) => {
+    return {
+      ...state,
+      input: state.input + ".",
+    };
+  },
+
+  [toggleHistory]: (state, action) => {
+    return {
+      ...state,
+      isHistoryOpen: !state.isHistoryOpen,
+    };
+  },
+
+  [setHistory]: (state, action) => {
+    return {
+      ...state,
+      history: [...state.history, action.payload],
+    };
+  },
+
+  [clearHistory]: (state, action) => {
+    return {
+      ...state,
+      history: [],
+    };
+  },
+
+  [loadHistory]: (state, action) => {
+    return {
+      ...state,
+      history: action.payload,
+    };
+  },
+});

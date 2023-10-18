@@ -1,3 +1,4 @@
+import { createReducer } from "@reduxjs/toolkit";
 import { setGameHistory, jumpTo, setWinLine } from "./actions";
 
 const initialState = {
@@ -6,33 +7,31 @@ const initialState = {
   winLine: [],
 };
 
-export const gameReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case setGameHistory.type: {
-      const nextHistory = [
-        ...state.gameHistory.slice(0, state.currentMove + 1),
-        action.payload,
-      ];
-      return {
-        ...state,
-        gameHistory: nextHistory,
-        currentMove: nextHistory.length - 1,
-      };
-    }
-    case jumpTo.type: {
-      return {
-        ...state,
-        currentMove: action.payload,
-        winLine: [],
-      };
-    }
-    case setWinLine.type: {
-      return {
-        ...state,
-        winLine: action.payload,
-      };
-    }
-    default:
-      return state;
-  }
-};
+export const gameReducer = createReducer(initialState, {
+  [setGameHistory]: (state, action) => {
+    const nextHistory = [
+      ...state.gameHistory.slice(0, state.currentMove + 1),
+      action.payload,
+    ];
+    return {
+      ...state,
+      gameHistory: nextHistory,
+      currentMove: nextHistory.length - 1,
+    };
+  },
+
+  [jumpTo]: (state, action) => {
+    return {
+      ...state,
+      currentMove: action.payload,
+      winLine: [],
+    };
+  },
+
+  [setWinLine]: (state, action) => {
+    return {
+      ...state,
+      winLine: action.payload,
+    };
+  },
+});
