@@ -1,6 +1,6 @@
 import css from "./Display.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHistory } from "../../../redux/calculator/actions";
+import { toggleHistory } from "../../../redux/calculator/historySlice";
 import { input, secInput } from "../../../redux/selectors";
 
 export function Display() {

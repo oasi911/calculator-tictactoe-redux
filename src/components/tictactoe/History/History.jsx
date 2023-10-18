@@ -1,6 +1,6 @@
 import css from "./History.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { jumpTo } from "../../../redux/tictactoe/actions";
+import { jumpTo } from "../../../redux/tictactoe/gameHistorySlice";
 import { gameHistory } from "../../../redux/selectors";
 
 export function History() {

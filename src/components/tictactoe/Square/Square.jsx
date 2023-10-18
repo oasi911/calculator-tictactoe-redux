@@ -1,4 +1,4 @@
-import css from './Square.module.css'
+import css from "./Square.module.css";
 
 export function Square({ value, onSquareClick, isWinSquare }) {
   const styles = {
@@ -6,7 +6,12 @@ export function Square({ value, onSquareClick, isWinSquare }) {
   };
 
   return (
-    <button type="button" className={css.square} onClick={onSquareClick} style={styles}>
+    <button
+      type="button"
+      className={css.square}
+      onClick={onSquareClick}
+      style={styles}
+    >
       {value}
     </button>
   );

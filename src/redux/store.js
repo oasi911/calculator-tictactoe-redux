@@ -1,14 +1,14 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { composeWithDevTools } from "@redux-devtools/extension";
+import { configureStore } from "@reduxjs/toolkit";
 import { localStorageMiddleware } from "./calculator/middleware";
-import { calculatorReducer } from "./calculator/reducer";
-import { gameReducer } from "./tictactoe/reducer";
+import inputSlice from "./calculator/inputSlice";
+import historySlice from "./calculator/historySlice";
+import gameHistorySlice from "./tictactoe/gameHistorySlice";
 
-const rootReducer = combineReducers({
-  calculator: calculatorReducer,
-  ticTacToe: gameReducer,
+export const store = configureStore({
+  reducer: {
+    input: inputSlice,
+    history: historySlice,
+    gameHistory: gameHistorySlice,
+  },
+  middleware: [localStorageMiddleware],
 });
-
-const enhancers = composeWithDevTools(applyMiddleware(localStorageMiddleware));
-
-export const store = createStore(rootReducer, enhancers);

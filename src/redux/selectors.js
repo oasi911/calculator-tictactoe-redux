@@ -1,17 +1,21 @@
-export const input = (state) => state.calculator.input;
+//Calculator
 
-export const operation = (state) => state.calculator.operation;
+export const input = (state) => state.input.input;
 
-export const result = (state) => state.calculator.result;
+export const operation = (state) => state.input.operation;
 
-export const secInput = (state) => state.calculator.secInput;
+export const result = (state) => state.input.result;
 
-export const isHistoryOpen = (state) => state.calculator.isHistoryOpen;
+export const secInput = (state) => state.input.secInput;
 
-export const history = (state) => state.calculator.history;
+export const isHistoryOpen = (state) => state.history.isHistoryOpen;
 
-export const currentMove = (state) => state.ticTacToe.currentMove;
+export const history = (state) => state.history.history;
 
-export const gameHistory = (state) => state.ticTacToe.gameHistory;
+//Tic Tac Toe
 
-export const winLine = (state) => state.ticTacToe.winLine;
+export const currentMove = (state) => state.gameHistory.currentMove;
+
+export const gameHistory = (state) => state.gameHistory.gameHistory;
+
+export const winLine = (state) => state.gameHistory.winLine;
