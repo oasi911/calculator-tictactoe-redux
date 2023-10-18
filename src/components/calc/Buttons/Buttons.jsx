@@ -9,8 +9,8 @@ import {
   handleBackspace,
   handleToggle,
   handleDot,
-  setHistory,
-} from "../../../redux/calculator/actions";
+} from "../../../redux/calculator/inputSlice";
+import { setHistory } from "../../../redux/calculator/historySlice";
 import { input, operation, result } from "../../../redux/selectors";
 import { useIsHistoryOpen } from "../useIsHistoryOpen";
 

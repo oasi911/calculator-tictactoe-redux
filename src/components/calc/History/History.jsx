@@ -3,7 +3,10 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { useIsHistoryOpen } from "../useIsHistoryOpen";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearHistory, loadHistory } from "../../../redux/calculator/actions";
+import {
+  clearHistory,
+  loadHistory,
+} from "../../../redux/calculator/historySlice";
 import { history } from "../../../redux/selectors";
 
 export function History() {
